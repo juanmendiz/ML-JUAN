@@ -41,6 +41,9 @@ X_train.to_csv(ruta_archivo, index=False)
 ruta_archivo = os.path.join('data', 'Test.csv')
 X_test.to_csv(ruta_archivo, index=False)
 
+ruta_archivo = os.path.join('data', 'y_train.csv')
+y_train.to_csv(ruta_archivo, index=False)
+
 "ESCALAR"
 
 # OPCION 1 DE MinMax
