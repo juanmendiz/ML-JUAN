@@ -35,14 +35,18 @@ X_train, X_test, y_train, y_test = train_test_split(df_proc.drop('class',axis=1)
                                                      test_size=0.2,
                                                      random_state=42)
 
-ruta_archivo = os.path.join('data', 'Train.csv')
-X_train.to_csv(ruta_archivo, index=False)
+# unir los Train y los Test:
 
-ruta_archivo = os.path.join('data', 'Test.csv')
-X_test.to_csv(ruta_archivo, index=False)
+y_train_df = pd.DataFrame(y_train, columns=['class'])
+Train = pd.concat([X_train, y_train_df], axis=1)
+ruta_archivo = os.path.join('../data', 'Train.csv')
+Train.to_csv(ruta_archivo, index=False)
 
-ruta_archivo = os.path.join('data', 'y_train.csv')
-y_train.to_csv(ruta_archivo, index=False)
+y_test_df = pd.DataFrame(y_test, columns=['class'])
+Test = pd.concat([X_test, y_test_df], axis=1)
+ruta_archivo = os.path.join('../data', 'Test.csv')
+Test.to_csv(ruta_archivo, index=False)
+
 
 "ESCALAR"
 
