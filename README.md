@@ -3,6 +3,7 @@
 
 Datos para calcular el grado de rendimiento con la edad y algunos datos de rendimiento del ejercicio. Saber cuanto tiempo vamos a tener que dedicar a cada usuario y en funcion de eso tener mas o menos personal contratado.
 
+Se crea un modelo de Gradiand Boosting Classifier con un data set de unas 14000  muestras de personas con unas caracteristicas fisicas y una clasificacion segun esten o no en forma.
 
 -Edad : 20 ~ 64
 
@@ -29,19 +30,12 @@ Datos para calcular el grado de rendimiento con la edad y algunos datos de rendi
 -class : **A,B,C,D** ( A: la mas favorable) 
 
 
-*** Hay que hacer un buen eda y probar muchos modelos diferentes
 ----------
 
+En la carpeta src se encuentran los scripts de Python;  
 
-# *Plan B*
+        **data_procesing.py** donde se carga la base de datos y se modifica. De aqui se generan los csv Procesados.csv, Train.cv y Test.csv que se guardan en la carperta data.
 
-*Predecir el precio de la cevada o trigo o avena. Uniendo los dataset de FAO (precio,año,pais) con precio en combustibles medio, precio de la electricidad medio y poblacion mundial*
+        **model.py** rentrena el modelo GBC con los datos generados en data_procesing.py y guarda el resultao del modelo en pickel en la carpeta models.
 
-*Reducir a los principales paises productores, eliminar paises importadores*
-
-*precio de la electricidad/pais/año*
-*precio combustible_medio/año*
-*precio electricidad/pais/año*
-
-
-tambien problemas para predecir ya que necesitariamos valores del futuro para predecir precio
+        **evaluation.py** carga de pickel el resultado de modelo y Test.csv para hacer la evaluacion .
