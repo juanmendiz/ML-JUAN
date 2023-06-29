@@ -16,13 +16,26 @@ y_test = Test['class']
 
 ruta_modelo = os.path.abspath(os.path.join('models','trained_model.pkl'))
 with open(ruta_modelo, "rb") as archivo:
-   modelo =  pickle.load(archivo)
+   model_o =  pickle.load(archivo)
 
-y_pred = modelo.predict(X_test)
+y_pred = model_o.predict(X_test)
 
-print("La Exactitud:",accuracy_score(y_test,y_pred))
+acu = accuracy_score(y_test,y_pred)
+matr_conf = multilabel_confusion_matrix(y_test,y_pred)
+
+model_guardar = os.path.abspath(os.path.join('models', "trained_model_accuracy.pkl"))
+with open(model_guardar, "wb") as archivo:
+    pickle.dump(acu,archivo)
+
+model_guardar = os.path.abspath(os.path.join('models', "trained_model_matriz.pkl"))
+with open(model_guardar, "wb") as archivo:
+    pickle.dump(matr_conf,archivo)
+
+
+
+print("La Exactitud:",acu)
 print("\t")
-print("Matriz de Confusion", multilabel_confusion_matrix(y_test,y_pred))
+print("Matriz de Confusion", matr_conf)
 
 # print("Sensibilidad :",recall_score(y_test, y_pred))
 # print("Precisión :",precision_score(y_test, y_pred))

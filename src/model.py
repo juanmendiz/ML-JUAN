@@ -17,11 +17,11 @@ y = Train['class']
 seed = 0
 scorer = make_scorer(recall_score, average='macro')
                      
-model = GradientBoostingClassifier(n_estimators=100, random_state=seed)
+model_o = GradientBoostingClassifier(n_estimators=100, random_state=seed)
 
-gbc_cv = cross_val_score(model, X, y, cv=10, scoring= scorer,error_score='raise')
+gbc_cv = cross_val_score(model_o, X, y, cv=10, scoring= scorer,error_score='raise')
 
-model.fit(X, y)
+model_o.fit(X, y)
 
 print('CV',gbc_cv)
 print('CV media',gbc_cv.mean())
@@ -29,7 +29,7 @@ print('CV desv',gbc_cv.std())
 
 model_guardar = os.path.abspath(os.path.join('models', "trained_model.pkl"))
 with open(model_guardar, "wb") as archivo:
-    pickle.dump(model,archivo)
+    pickle.dump(model_o,archivo)
 
 #Modelo GBC
 
